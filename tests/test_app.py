@@ -35,6 +35,11 @@ def test_sort_names(web_client):
     assert response.status_code == 200
     assert response.data.decode('utf-8') == 'Alice,Joe,Julia,Kieran,Zoe'
 
+def test_add_and_sort_names(web_client):
+    response = web_client.get('/names?names=Eddie,Leo')
+    assert response.status_code == 200
+    assert response.data.decode('utf-8') == 'Alice,Eddie,Julia,Karim,Leo'
+
 # === Example Code Below ===
 
 """

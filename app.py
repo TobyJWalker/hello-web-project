@@ -45,6 +45,14 @@ def sort_names():
 
     return ','.join(sorted_names)
 
+@app.route('/names', methods=['GET'])
+def names():
+    names = ['Alice', 'Julia', 'Karim']
+    names += request.args['names'].split(',')
+    sorted_names = sorted(names)
+
+    return ','.join(sorted_names)
+
 # == Example Code Below ==
 
 # GET /emoji
