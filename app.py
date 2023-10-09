@@ -1,5 +1,7 @@
 import os
 from flask import Flask, request
+from lib.book_repository import *
+from lib.database_connection import get_flask_database_connection
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -52,6 +54,23 @@ def names():
     sorted_names = sorted(names)
 
     return ','.join(sorted_names)
+
+@app.route('/books', methods=['GET'])
+def get_all_books():
+    conn = get_flask_database_connection(app)
+    repo = BookRepository(conn)
+
+    books = repo.all()
+    return '\n'.join([str(book) for book in books])
+
+@app.route('/books/<id>', methods=['GET'])
+def get_single_book():
+    return 'Later i will write this code'
+
+@app.route('/books/<id>', methods=['DELETE'])
+def delete_one_book():
+    return 'Later i will write this code'
+
 
 # == Example Code Below ==
 
