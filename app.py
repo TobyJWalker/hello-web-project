@@ -31,6 +31,13 @@ def wave():
 
     return f'I am waving at {name}!'
 
+@app.route('/count_vowels', methods=['POST'])
+def count_vowels():
+    text = request.form['text']
+    vowel_count = sum([1 for char in text if char in 'aeiou'])
+
+    return f'There are {vowel_count} vowels in "{text}"'
+
 # == Example Code Below ==
 
 # GET /emoji
