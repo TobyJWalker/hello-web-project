@@ -38,6 +38,13 @@ def count_vowels():
 
     return f'There are {vowel_count} vowels in "{text}"'
 
+@app.route('/sort_names', methods=['POST'])
+def sort_names():
+    names = request.form['names'].split(',')
+    sorted_names = sorted(names)
+
+    return ','.join(sorted_names)
+
 # == Example Code Below ==
 
 # GET /emoji

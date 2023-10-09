@@ -30,6 +30,11 @@ def test_post_count_vowels_mercurial(web_client):
     assert response.status_code == 200
     assert response.data.decode('utf-8') == 'There are 4 vowels in "mercurial"'
 
+def test_sort_names(web_client):
+    response = web_client.post('/sort_names', data={'names': 'Joe,Alice,Zoe,Julia,Kieran'})
+    assert response.status_code == 200
+    assert response.data.decode('utf-8') == 'Alice,Joe,Julia,Kieran,Zoe'
+
 # === Example Code Below ===
 
 """
