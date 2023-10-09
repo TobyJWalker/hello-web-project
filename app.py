@@ -18,6 +18,19 @@ def say_goodbye():
     name = request.form['name']
     return f"Goodbye, {name}!"
 
+@app.route('/submit', methods=['POST'])
+def submit():
+    name = request.form['name']
+    msg = request.form['message']
+
+    return f'Thanks {name}, you sent: "{msg}"'
+
+@app.route('/wave', methods=['GET'])
+def wave():
+    name = request.args['name']
+
+    return f'I am waving at {name}!'
+
 # == Example Code Below ==
 
 # GET /emoji
